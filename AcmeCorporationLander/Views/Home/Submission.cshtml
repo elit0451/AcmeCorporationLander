@@ -1,0 +1,51 @@
+﻿@model ContentLibrary.Submission
+
+@{
+    ViewData["Title"] = "Submission";
+}
+
+<h2>Welcome to Acme Corrporation Submission Form!</h2>
+
+<h4><i>Please enter the following information for submitting the form!</i></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Submission">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductSerialNr" class="control-label">Product Serial Number</label>
+                <input asp-for="ProductSerialNr" class="form-control" required />
+                <span asp-validation-for="ProductSerialNr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+            
+            <h3>@ViewData["Message"]</h3>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

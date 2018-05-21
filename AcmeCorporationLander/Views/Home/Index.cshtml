@@ -1,0 +1,54 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<ContentLibrary.Submission>
+@using ReflectionIT.Mvc.Paging
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>List of submissions</h2>
+
+<p>
+    @Html.ActionLink("New submission", "Submission")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("First Name")
+            </th>
+            <th>
+                @Html.Label("Last Name")
+            </th>
+            <th>
+                @Html.Label("Email")
+            </th>
+            <th>
+                @Html.Label("Product Serial Nº")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSerialNr)
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav>
+    @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model })
+</nav>
